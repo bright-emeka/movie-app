@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 
-const API_URL = "http://www.omdbapi.com?apikey=b6003d8a";
+// Use https instead of http to avoid "Mixed Content" security blocks in the browser
+const API_URL = "http://www.omdbapi.com?apikey=b2471fab";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +41,7 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
